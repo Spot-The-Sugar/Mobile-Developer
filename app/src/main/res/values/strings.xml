@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SpotTheSugar</string>
+    <string name="signup">Signup</string>
+    <string name="password">password</string>
+    <string name="email">email\n</string>
+    <string name="name">name</string>
+    <string name="title_signup_page">daftar dulu</string>
+
+</resources>
