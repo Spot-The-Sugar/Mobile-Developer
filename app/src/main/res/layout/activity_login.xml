@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".ui.SignUpActivity">
+    tools:context=".ui.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,15 +22,6 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"/>
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Your name"
-            android:inputType="textPersonName"
-            android:padding="12dp"
-            android:background="@drawable/rounded_edittext"
-            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/email"
@@ -54,17 +45,7 @@
             android:drawableEnd="@drawable/baseline_remove_red_eye_24"
             android:layout_marginBottom="16dp"/>
 
-        <EditText
-            android:id="@+id/confirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Confirm Password"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:background="@drawable/rounded_edittext"
-            android:drawableEnd="@drawable/baseline_remove_red_eye_24"
-            android:drawablePadding="12dp"
-            android:layout_marginBottom="32dp"/>
+
 
         <Button
             android:id="@+id/signUpButton"

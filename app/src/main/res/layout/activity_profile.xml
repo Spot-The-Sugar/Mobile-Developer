@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Toolbar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#8BC34A"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Back" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Profile"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:padding="16dp" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- Profile Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#8BC34A"
+            android:padding="32dp">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/sts_logo"
+                android:contentDescription="Profile Image"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <ImageButton
+                android:id="@+id/editProfileImage"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_edit_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Edit Profile Image"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/profileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sarah Ancika"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/profileEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sarahancika22@gmail.com"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Profile Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="#666666"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/profileNameDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sarah Ancika"
+                android:textColor="#000000"
+                android:paddingBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="#666666"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/profileEmailDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sarahancika22@gmail.com"
+                android:textColor="#000000"
+                android:paddingBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:textColor="#666666"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/profileAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="#000000"
+                android:paddingBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weight"
+                android:textColor="#666666"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/profileWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="55 Kg"
+                android:textColor="#000000"
+                android:paddingBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Height"
+                android:textColor="#666666"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/profileHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="165 cm"
+                android:textColor="#000000"
+                android:paddingBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Limit Sugar Consumption"
+                android:textColor="#666666"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/profileSugarLimit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1 jt gram"
+                android:textColor="#000000"
+                android:paddingBottom="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
