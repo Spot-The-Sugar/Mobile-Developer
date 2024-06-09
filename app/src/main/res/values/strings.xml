@@ -5,7 +5,8 @@
     <string name="email">email\n</string>
     <string name="name">name</string>
     <string name="title_signup_page">daftar dulu</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="logout">keluar</string>
+    <string name="profile">profile</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
