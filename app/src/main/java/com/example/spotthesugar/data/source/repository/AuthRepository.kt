@@ -10,11 +10,12 @@ class AuthRepository(private val apiService: ApiService) {
         emit(ResultState.Loading)
         try {
             val response = apiService.login(email, password)
-            if (response.error!!) {
-                emit(ResultState.Error(response.message!!))
+            if (response.status != "success") {
+                emit(ResultState.Error(response.message ?: "Unknown error"))
+            }else{
+                emit(ResultState.Success(response.data?.token?:""))
             }
 
-            emit(ResultState.Success(response.loginResult!!))
         } catch (e: Exception) {
             emit(ResultState.Error(e.message.toString()))
         }
@@ -24,10 +25,10 @@ class AuthRepository(private val apiService: ApiService) {
         emit(ResultState.Loading)
         try {
             val response = apiService.register(name, email, password)
-            if (response.error == false) {
-                emit(ResultState.Success(response))
-            } else {
+            if (response.status != "success") {
                 emit(ResultState.Error(response.message ?: "Unknown error"))
+            } else {
+                emit(ResultState.Success(response))
             }
         } catch (e: Exception) {
             emit(ResultState.Error(e.message.toString()))

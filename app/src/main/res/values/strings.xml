@@ -8,5 +8,11 @@
     <string name="logout">keluar</string>
     <string name="profile">profile</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nurigrade">Nutri-Grade</string>
+    <string name="item">Nutella</string>
+    <string name="sugarText">Sugar 6.5g</string>
+    <string name="categoriesText">Category D</string>
+    <string name="nutrigradeA">Nutri-Grade A</string>
+    <string name="nutriGradeDesc">Drinks with grade A contain little sugar, no sweeteners, and little saturated fat content. On average it only contains less than 1g of sugar per 100 ml.</string>
 
 </resources>

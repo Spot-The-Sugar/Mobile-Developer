@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".ui.ProfileActivity">
+    tools:context=".ui.profile.ProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,25 +67,9 @@
                 android:contentDescription="Edit Profile Image"
                 android:layout_gravity="center" />
 
-            <TextView
-                android:id="@+id/profileName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sarah Ancika"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
-                android:gravity="center" />
 
-            <TextView
-                android:id="@+id/profileEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="sarahancika22@gmail.com"
-                android:textColor="#666666"
-                android:textSize="14sp"
-                android:gravity="center" />
+
+
         </LinearLayout>
 
         <!-- Profile Details -->
@@ -186,5 +170,15 @@
                 android:textColor="#000000"
                 android:paddingBottom="16dp" />
         </LinearLayout>
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="140dp"
+            android:indeterminate="true"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible" />
     </LinearLayout>
+
 </ScrollView>

@@ -1,5 +1,6 @@
 package com.example.spotthesugar.ui.signup
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,6 +27,7 @@ class SignUpActivity : AppCompatActivity() {
         setupAction()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun setupAction() {
        binding.signInBtn.setOnClickListener {
            startActivity(Intent(this, LoginActivity::class.java))

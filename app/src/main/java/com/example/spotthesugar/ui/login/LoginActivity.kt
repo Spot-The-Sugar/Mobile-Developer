@@ -54,8 +54,9 @@ class LoginActivity : AppCompatActivity() {
                         showLoading(true)
                     }
                     is ResultState.Success ->  {
-                        Log.d("Token", result.data.token.toString())
-                        prefs.saveAccessToken(result.data.token!!)
+                        Log.d("Token", result.data.toString())
+                        prefs.saveAccessToken(result.data.toString())
+
                         Log.d("Token disimpan", prefs.fetchAccessToken().toString())
 
                         Intent(this@LoginActivity, MainActivity::class.java).also {
