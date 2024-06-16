@@ -19,6 +19,7 @@ import com.example.spotthesugar.data.pref.UserSharedPreference
 import com.example.spotthesugar.databinding.ActivityMainBinding
 import com.example.spotthesugar.factory.ViewModelFactory
 import com.example.spotthesugar.ui.camera.CameraActivity
+import com.example.spotthesugar.ui.history.HistoryActivity
 import com.example.spotthesugar.ui.login.LoginActivity
 import com.example.spotthesugar.ui.profile.ProfileActivity
 import com.example.spotthesugar.ui.profile.ProfileViewModel
@@ -71,6 +72,10 @@ class MainActivity : AppCompatActivity() {
                     startCameraX()
                     true
                 }
+                R.id.history_btn -> {
+                    startHistories()
+                    true
+                }
                 else -> false
             }
         }
@@ -78,6 +83,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun startCameraX() {
         val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun startHistories(){
+        val intent = Intent(this,HistoryActivity::class.java)
         startActivity(intent)
     }
 

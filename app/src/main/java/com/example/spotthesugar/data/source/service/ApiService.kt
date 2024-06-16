@@ -1,6 +1,8 @@
 package com.example.spotthesugar.data.source.service
 
 import com.example.spotthesugar.data.source.response.EditProfileResponse
+import com.example.spotthesugar.data.source.response.HistoryDetailResponse
+import com.example.spotthesugar.data.source.response.HistoryResponse
 import com.example.spotthesugar.data.source.response.LoginResponse
 import com.example.spotthesugar.data.source.response.LoginResponse1
 import com.example.spotthesugar.data.source.response.ProfileResponse
@@ -12,6 +14,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface ApiService {
     @FormUrlEncoded
@@ -45,6 +48,17 @@ interface ApiService {
         @Field("weight") weight: Double,
         @Field("limit") limit: Int,
     ): EditProfileResponse
+
+    @GET("history")
+    suspend fun getHistory(
+        @Header("Authorization") bearerToken: String
+    ): HistoryResponse
+
+    @GET("history/{id}")
+    suspend fun getDetailHistory(
+        @Header("Authorization") bearerToken: String,
+        @Path("id") id:String
+    ): HistoryDetailResponse
 
 
 }

@@ -14,8 +14,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,6 +22,7 @@
             android:paddingTop="8dp">
 
             <ImageView
+                android:id="@+id/productImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/nutella1" />
@@ -35,12 +34,12 @@
                 android:paddingLeft="16dp">
 
                 <TextView
-                    android:id="@+id/daily_limit_value"
+                    android:id="@+id/productNameView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/item"
                     android:textStyle="bold"
-                    android:textSize="24sp"
+                    android:textSize="14sp"
                     android:textColor="@color/brown" />
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -49,17 +48,19 @@
 
                     <Button
                         android:id="@+id/sugarBtn"
-                        android:layout_width="130dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_button"
                         android:max="100"
+                        android:textSize="12sp"
                         android:layout_marginRight="8dp"
                         android:text="@string/sugarText"
                         android:progress="30" />
                     <Button
                         android:id="@+id/categoriesBtn"
-                        android:layout_width="130dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="12sp"
                         android:background="@drawable/rounded_button"
                         android:max="100"
                         android:text="@string/categoriesText"

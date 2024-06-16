@@ -14,6 +14,7 @@ import com.example.spotthesugar.data.ResultState
 import com.example.spotthesugar.data.pref.UserSharedPreference
 import com.example.spotthesugar.databinding.ActivityProfileBinding
 import com.example.spotthesugar.factory.ViewModelFactory
+import com.example.spotthesugar.ui.MainActivity
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -47,6 +48,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         loadProfileData()
+        back()
     }
 
     private fun loadProfileData() {
@@ -73,6 +75,13 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun back(){
+        binding.backButton.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun observeViewModel(){
