@@ -14,12 +14,15 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.example.spotthesugar.R
+import com.example.spotthesugar.data.ResultState
 import com.example.spotthesugar.data.pref.UserSharedPreference
 import com.example.spotthesugar.databinding.ActivityMainBinding
 import com.example.spotthesugar.factory.ViewModelFactory
 import com.example.spotthesugar.ui.camera.CameraActivity
 import com.example.spotthesugar.ui.history.HistoryActivity
+import com.example.spotthesugar.ui.history.TrackViewModel
 import com.example.spotthesugar.ui.login.LoginActivity
 import com.example.spotthesugar.ui.profile.ProfileActivity
 import com.example.spotthesugar.ui.profile.ProfileViewModel
@@ -32,6 +35,10 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences =
             getSharedPreferences(UserSharedPreference.SHARED_PREFS, Context.MODE_PRIVATE)
         UserSharedPreference(sharedPreferences)
+    }
+
+    private val viewModel by viewModels<TrackViewModel> {
+        ViewModelFactory.getInstance()
     }
 
     private val requestPermissionLauncher =
@@ -60,6 +67,23 @@ class MainActivity : AppCompatActivity() {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
 
+        binding.imgGradeA.setOnClickListener {
+            displayGrades(1)
+            changeCardBackgroundColor(R.color.white_green)
+        }
+        binding.imgGradeB.setOnClickListener {
+            displayGrades(2)
+            changeCardBackgroundColor(R.color.yellow)
+        }
+        binding.imgGradeC.setOnClickListener {
+            displayGrades(3)
+            changeCardBackgroundColor(R.color.orange)
+        }
+        binding.imgGradeD.setOnClickListener {
+            displayGrades(4)
+            changeCardBackgroundColor(R.color.red)
+        }
+
 
         binding.profilePicture.setOnClickListener {
             view ->
@@ -77,6 +101,34 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 else -> false
+            }
+        }
+    }
+
+    private fun changeCardBackgroundColor(colorResId: Int) {
+        val color = ResourcesCompat.getColor(resources, colorResId, null)
+        binding.backgroundNutriGrade.setCardBackgroundColor(color)
+    }
+
+    private fun displayGrades(id:Int){
+        val token = "Bearer ${prefs.fetchAccessToken()}"
+
+        viewModel.getGrade(token,id).observe(this@MainActivity){
+            result ->
+            when(result){
+                is ResultState.Loading -> showLoading(true)
+                is ResultState.Error ->{
+                    showLoading(false)
+                    showToast(result.error)
+                }
+                is ResultState.Success -> {
+                    showLoading(false)
+                    val gradeData = result.data
+                    gradeData?.let {
+                        binding.nutriGradeTextView.text = it.gradeName
+                        binding.nutriGradeDescription.text = it.gradeDesc
+                    }
+                }
             }
         }
     }
@@ -121,6 +173,10 @@ class MainActivity : AppCompatActivity() {
         prefs.deleteAccessToken()
         startActivity(Intent(this,LoginActivity::class.java))
         finish()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun showToast(message: String) {

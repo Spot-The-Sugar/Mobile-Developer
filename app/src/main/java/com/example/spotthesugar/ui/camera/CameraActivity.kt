@@ -41,13 +41,13 @@ class CameraActivity : AppCompatActivity() {
     public override fun onResume() {
         super.onResume()
         hideSystemUI()
-       // startCamera()
-        startCamera2()
+        startCamera()
+        //startCamera2()
     }
 
     private fun startCamera2() {
         val options = BarcodeScannerOptions.Builder()
-            .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
+            .setBarcodeFormats(Barcode.FORMAT_EAN_13)
             .build()
         barcodeScanner = BarcodeScanning.getClient(options)
 
@@ -70,7 +70,7 @@ class CameraActivity : AppCompatActivity() {
 
     private fun startCamera() {
         val options = BarcodeScannerOptions.Builder()
-            .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
+            .setBarcodeFormats(Barcode.FORMAT_EAN_13)  // Mengubah format ke EAN-13
             .build()
         barcodeScanner = BarcodeScanning.getClient(options)
 
@@ -79,7 +79,7 @@ class CameraActivity : AppCompatActivity() {
             COORDINATE_SYSTEM_VIEW_REFERENCED,
             ContextCompat.getMainExecutor(this)
         ) { result: MlKitAnalyzer.Result? ->
-            showResult(result)
+            showResultEAN13(result)
         }
 
         val cameraController = LifecycleCameraController(baseContext)
@@ -89,34 +89,6 @@ class CameraActivity : AppCompatActivity() {
         )
         cameraController.bindToLifecycle(this)
         binding.viewFinder.controller = cameraController
-
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
-
-        cameraProviderFuture.addListener({
-            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-            val preview = Preview.Builder()
-                .build()
-                .also {
-                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
-                }
-
-            try {
-                cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(
-                    this,
-                    cameraSelector,
-                    preview
-                )
-
-            } catch (exc: Exception) {
-                Toast.makeText(
-                    this@CameraActivity,
-                    "Gagal memunculkan kamera.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                Log.e(TAG, "startCamera: ${exc.message}")
-            }
-        }, ContextCompat.getMainExecutor(this))
     }
 
     private fun hideSystemUI() {
@@ -132,24 +104,29 @@ class CameraActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    private fun showResult(result: MlKitAnalyzer.Result?) {
-
-        if (firstCall){
+    private fun showResultEAN13(result: MlKitAnalyzer.Result?) {
+        if (firstCall) {
             val barcodeResults = result?.getValue(barcodeScanner)
             if ((barcodeResults != null) &&
-                (barcodeResults.size != 0) &&
+                (barcodeResults.isNotEmpty()) &&
                 (barcodeResults.first() != null)
             ) {
                 firstCall = false
                 val barcode = barcodeResults[0]
-                val alertDialog = AlertDialog.Builder(this)
-                    .setMessage(barcode.rawValue)
-                    .setCancelable(false)
-                    .create()
-                alertDialog.show()
+
+                if (barcode.format == Barcode.FORMAT_EAN_13) {
+                    // Tampilkan Toast dengan nilai barcode
+                    Toast.makeText(this, "EAN-13 Barcode detected: ${barcode.rawValue}", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Unsupported barcode format", Toast.LENGTH_SHORT).show()
+                }
+
+                // Reset firstCall after a delay to allow for multiple scans
+                binding.viewFinder.postDelayed({
+                    firstCall = true
+                }, 2000) // Adjust delay as needed
             }
         }
-
     }
 
     private fun showResult2(result: MlKitAnalyzer.Result?){

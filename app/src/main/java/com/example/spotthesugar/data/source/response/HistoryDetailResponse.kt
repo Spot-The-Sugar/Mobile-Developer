@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class HistoryDetailResponse(
 
 	@field:SerializedName("data")
-	val data: List<DetailDataItem?>? = null,
+	val data: List<DetailDataItem>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,
@@ -17,7 +17,7 @@ data class HistoryDetailResponse(
 data class DetailDataItem(
 
 	@field:SerializedName("serving_sugar")
-	val servingSugar: Int? = null,
+	val servingSugar: Double? = null,
 
 	@field:SerializedName("image_url")
 	val imageUrl: String? = null,
@@ -26,7 +26,7 @@ data class DetailDataItem(
 	val productName: String? = null,
 
 	@field:SerializedName("total_sugar")
-	val totalSugar: Int? = null,
+	val totalSugar: Double? = null,
 
 	@field:SerializedName("serving_pack")
 	val servingPack: Int? = null,
@@ -44,7 +44,7 @@ data class DetailDataItem(
 	val productId: Int? = null,
 
 	@field:SerializedName("serving_size")
-	val servingSize: Int? = null,
+	val servingSize: Double? = null,
 
 	@field:SerializedName("scan_consume")
 	val scanConsume: Int? = null,

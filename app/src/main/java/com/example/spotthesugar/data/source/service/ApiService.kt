@@ -1,6 +1,7 @@
 package com.example.spotthesugar.data.source.service
 
 import com.example.spotthesugar.data.source.response.EditProfileResponse
+import com.example.spotthesugar.data.source.response.GradeResponse
 import com.example.spotthesugar.data.source.response.HistoryDetailResponse
 import com.example.spotthesugar.data.source.response.HistoryResponse
 import com.example.spotthesugar.data.source.response.LoginResponse
@@ -57,8 +58,14 @@ interface ApiService {
     @GET("history/{id}")
     suspend fun getDetailHistory(
         @Header("Authorization") bearerToken: String,
-        @Path("id") id:String
+        @Path("id") id:Int
     ): HistoryDetailResponse
+
+    @GET("grade/{id}")
+    suspend fun getGrade(
+        @Header("Authorization") bearerToken: String,
+        @Path("id") id:Int
+    ): GradeResponse
 
 
 }

@@ -1,5 +1,7 @@
 package com.example.spotthesugar.ui.adapter
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.spotthesugar.R
 import com.example.spotthesugar.data.source.response.DataItem
+import com.example.spotthesugar.ui.history.HistoryDetailActivity
 import org.w3c.dom.Text
 
 class HistoryAdapter(private var histories:List<DataItem>)
@@ -43,11 +46,13 @@ class HistoryAdapter(private var histories:List<DataItem>)
         holder.sugarBtnView.text = "Sugar " + history.totalSugar.toString() + "g"
         holder.categoryText.text = history.productGrade
 
-//        holder.itemView.setOnClickListener {
-//            val intent = Intent(holder.itemView.context,DetailStoryActivity::class.java).apply {
-//                putExtra(DetailStoryActivity.EXTRA_STORY_ID,story.id)
-//            }
-//            holder.itemView.context.startActivity(intent)
-//        }
+        holder.itemView.setOnClickListener {
+            Log.d("HistoryAdapter", "Clicked item at position: $position")
+            Log.d("HistoryAdapter", "History ID: ${history.scanId}")
+            val intent = Intent(holder.itemView.context,HistoryDetailActivity::class.java).apply {
+                putExtra(HistoryDetailActivity.EXTRA_HISTORY_ID,history.scanId)
+            }
+            holder.itemView.context.startActivity(intent)
+        }
     }
 }

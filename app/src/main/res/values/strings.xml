@@ -13,6 +13,13 @@
     <string name="sugarText">Sugar 6.5g</string>
     <string name="categoriesText">Category D</string>
     <string name="nutrigradeA">Nutri-Grade A</string>
+    <string name="sugar">Sugar</string>
+    <string name="sugar_value">6.5g</string>
+    <string name="serving_sugar">Serving Sugar</string>
+    <string name="serving_sugar_value">11g</string>
+    <string name="total_sugar">Total Sugar</string>
+    <string name="total_sugar_value">23g</string>
+    <string name="recommendation">Recommendation</string>
     <string name="nutriGradeDesc">Drinks with grade A contain little sugar, no sweeteners, and little saturated fat content. On average it only contains less than 1g of sugar per 100 ml.</string>
 
 </resources>

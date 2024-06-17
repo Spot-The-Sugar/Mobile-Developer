@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/grey_white"
     tools:context=".ui.MainActivity">
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,13 +36,30 @@
                 android:layout_marginEnd="24dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/greetingText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Hi, Anton \n Find, track and spot the sugar in your food"
-                    android:textSize="12sp" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/greetingText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:text="Hi, Anton"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/descriptionText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:text=" Find, track and spot the sugar in your food"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -45,11 +73,10 @@
 
                     <ImageView
                         android:id="@+id/profilePicture"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="8dp"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/baseline_person_24" />
+                        app:srcCompat="@drawable/sana_rounded" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -57,6 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="16dp"
+                android:layout_marginTop="64dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -111,12 +139,14 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/backgroundNutriGrade"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-              android:backgroundTint="@color/white_green"
+             app:cardBackgroundColor="@color/white_green"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="32dp"
+                android:layout_marginTop="32dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -127,7 +157,7 @@
                     android:padding="16dp">
 
                     <TextView
-                        android:id="@+id/nutriGradeA"
+                        android:id="@+id/nutriGradeTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/nutrigradeA"
@@ -135,7 +165,7 @@
                         android:textColor="@color/dark_green" />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/nutriGradeDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/nutriGradeDesc"
@@ -150,7 +180,6 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginLeft="16dp"
                 android:layout_margin="16dp"
-
                 android:backgroundTint="@color/white_green">
                 <LinearLayout
                     android:layout_width="match_parent"
